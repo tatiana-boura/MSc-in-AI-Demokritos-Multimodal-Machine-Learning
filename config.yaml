@@ -1,0 +1,12 @@
+# Data Paths
+#DATA_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data"
+BLUES_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\blues-jazz"
+COUNTRY_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\country"
+HIP_HOP_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\hip-hop"
+INDIE_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\indie-folk"
+METAL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\metal"
+POP_ROCK_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\pop-rock"
+PUNK_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\punk"
+SOUL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\soul"
+DRILL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\uk-drill"
+
