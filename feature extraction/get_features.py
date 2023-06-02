@@ -3,6 +3,7 @@ import yaml
 import os
 
 from get_audio_features import get_audio_features
+from get_video_features import get_video_features
 
 
 def create_index(config):
@@ -42,12 +43,17 @@ def get_features():
     clip_config = [BLUES_PATH, COUNTRY_PATH, HIP_HOP_PATH, INDIE_PATH, METAL_PATH, POP_ROCK_PATH, PUNK_PATH, SOUL_PATH, DRILL_PATH]
 
     index = create_index(config=clip_config)
-
+    '''
+    print(index)
     '''
     audio_feats = get_audio_features(index[["path_audio", "song_name", "genre"]], config)
 
     print(audio_feats)
     '''
-    print(index)
+
+    video_feats = get_video_features(index[["path_video", "song_name", "genre"]], config)
+    print(video_feats)
+    '''
+
 
 get_features()

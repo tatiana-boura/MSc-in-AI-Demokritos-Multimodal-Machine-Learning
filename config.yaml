@@ -10,3 +10,8 @@ PUNK_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\pu
 SOUL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\soul"
 DRILL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\uk-drill"
 
+MODEL : "slow_r50"
+
+BATCH_SIZE : 2
+
+NUMBER_OF_FRAMES : 100

@@ -138,9 +138,9 @@ def get_audio_features(data, config):
         if (i + 1) % 100 == 0:
             print(f'Start preprocessing video-clip {i}...')
 
-        df = extract_feature_metric(data['path_audio'][i], metrics) if i == 0 else pd.concat(
-            (df, extract_feature_metric(data['path_audio'][i], metrics)), ignore_index=True)
+        audio_feats_df = extract_feature_metric(data['path_audio'][i], metrics) if i == 0 else pd.concat(
+            (audio_feats_df, extract_feature_metric(data['path_audio'][i], metrics)), ignore_index=True)
 
-    df.to_csv("./audio_feats.csv", index=False)
+    audio_feats_df.to_csv("./audio_feats.csv", index=False)
 
-    return df
+    return audio_feats_df
