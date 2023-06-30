@@ -12,6 +12,14 @@ DRILL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\u
 
 MODEL : "slow_r50"
 
-BATCH_SIZE : 2
+BATCH_SIZE : 4
 
 NUMBER_OF_FRAMES : 100
+
+FEATS_PATH: "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\MSc-in-AI-Demokritos-Multimodal-Machine-Learning\\\\feature extraction"
+
+EMBEDDINGS_PATH: "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\MSc-in-AI-Demokritos-Multimodal-Machine-Learning\\\\embeddings.csv"
+
+CHECKPOINT_PATH: "./autoencoder.pt"
+
+EPOCHS : 150

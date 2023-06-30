@@ -1,9 +1,11 @@
 import pandas as pd
 import yaml
 import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 from get_audio_features import get_audio_features
 from get_video_features import get_video_features
+from get_text_features import get_text_features, lyrics_to_embeddings
 
 
 def create_index(config):
@@ -38,22 +40,33 @@ def get_features():
     POP_ROCK_PATH = config["POP_ROCK_PATH"]
     PUNK_PATH = config["PUNK_PATH"]
     SOUL_PATH = config["SOUL_PATH"]
-    DRILL_PATH= config["DRILL_PATH"]
+    DRILL_PATH = config["DRILL_PATH"]
+
+    FEATS_PATH = config["FEATS_PATH"]
 
     clip_config = [BLUES_PATH, COUNTRY_PATH, HIP_HOP_PATH, INDIE_PATH, METAL_PATH, POP_ROCK_PATH, PUNK_PATH, SOUL_PATH, DRILL_PATH]
 
     index = create_index(config=clip_config)
+
+    index.to_csv("./index.csv", index=False)
     '''
     print(index)
     '''
+    '''
     audio_feats = get_audio_features(index[["path_audio", "song_name", "genre"]], config)
-
     print(audio_feats)
     '''
 
     video_feats = get_video_features(index[["path_video", "song_name", "genre"]], config)
     print(video_feats)
+
     '''
+    get_text_features(index[["path_audio", "song_name", "genre"]])
+    '''
+    '''
+    lyrics_to_embeddings(FEATS_PATH+"\\lyrics.csv")
+    '''
+
 
 
 get_features()

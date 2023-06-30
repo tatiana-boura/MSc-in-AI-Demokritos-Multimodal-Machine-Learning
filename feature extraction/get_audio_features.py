@@ -36,7 +36,7 @@ def extract_mfcc_feature_metric(audio_file_name, signal, metrics, sample_rate, n
     return df
 
 
-def extract_feature_metric(audio_file_path, metrics):
+def extract_feature_metric(audio_file_path, audio_name, metrics):
     # 1. Importing 1 file
     y, sr = librosa.load(path=audio_file_path, sr=22050)
 
@@ -82,7 +82,7 @@ def extract_feature_metric(audio_file_path, metrics):
     spectral_bandwidth_4 = librosa.feature.spectral_bandwidth(y=signal, sr=sr, p=4)[0]
 
     audio_features = {"audio_path": audio_file_path,
-                      "zero_crossings": np.sum(librosa.zero_crossings(signal, pad=False)),
+                      "song_name" : audio_name,
                       "tempo_bpm": tempo_y
                       }
 
@@ -135,11 +135,12 @@ def get_audio_features(data, config):
                "percentile": [np.percentile, 0.75]}
 
     for i in data.index:
+    #for i in range(10):
         if (i + 1) % 100 == 0:
             print(f'Start preprocessing video-clip {i}...')
 
-        audio_feats_df = extract_feature_metric(data['path_audio'][i], metrics) if i == 0 else pd.concat(
-            (audio_feats_df, extract_feature_metric(data['path_audio'][i], metrics)), ignore_index=True)
+        audio_feats_df = extract_feature_metric(data['path_audio'][i], data['song_name'][i], metrics) if i == 0 else pd.concat(
+            (audio_feats_df, extract_feature_metric(data['path_audio'][i], data['song_name'][i], metrics)), ignore_index=True)
 
     audio_feats_df.to_csv("./audio_feats.csv", index=False)
 
