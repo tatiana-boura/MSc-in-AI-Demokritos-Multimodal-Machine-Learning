@@ -135,7 +135,6 @@ def get_audio_features(data, config):
                "percentile": [np.percentile, 0.75]}
 
     for i in data.index:
-    #for i in range(10):
         if (i + 1) % 100 == 0:
             print(f'Start preprocessing video-clip {i}...')
 
