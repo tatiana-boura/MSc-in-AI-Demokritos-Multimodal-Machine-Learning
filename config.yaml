@@ -10,6 +10,8 @@ PUNK_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\pu
 SOUL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\soul"
 DRILL_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\uk-drill"
 
+TEST_PATH : "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\data\\\\data_test\\\\"
+
 MODEL : "slow_r50"
 
 BATCH_SIZE : 4
@@ -19,7 +21,10 @@ NUMBER_OF_FRAMES : 100
 FEATS_PATH: "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\MSc-in-AI-Demokritos-Multimodal-Machine-Learning\\\\feature extraction"
 
 EMBEDDINGS_PATH: "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\MSc-in-AI-Demokritos-Multimodal-Machine-Learning\\\\embeddings.csv"
+EMBEDDINGS_TEST_PATH: "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\MSc-in-AI-Demokritos-Multimodal-Machine-Learning\\\\embeddings_test.csv"
 
 CHECKPOINT_PATH: "./autoencoder.pt"
 
-EPOCHS : 150
+AUTOENC_PATH: "C:\\\\Users\\\\tatbo\\\\PycharmProjects\\\\Multimodal\\\\MSc-in-AI-Demokritos-Multimodal-Machine-Learning\\\\autoencoder.pt"
+
+EPOCHS : 600

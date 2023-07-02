@@ -127,7 +127,7 @@ def extract_feature_metric(audio_file_path, audio_name, metrics):
     return df
 
 
-def get_audio_features(data, config):
+def get_audio_features(data, config, test=False):
 
     metrics = {"mean": [np.mean, None],
                "median": [np.median, None],
@@ -141,6 +141,9 @@ def get_audio_features(data, config):
         audio_feats_df = extract_feature_metric(data['path_audio'][i], data['song_name'][i], metrics) if i == 0 else pd.concat(
             (audio_feats_df, extract_feature_metric(data['path_audio'][i], data['song_name'][i], metrics)), ignore_index=True)
 
-    audio_feats_df.to_csv("./audio_feats.csv", index=False)
+    if not test:
+        audio_feats_df.to_csv("./audio_feats.csv", index=False)
+    else:
+        audio_feats_df.to_csv("./audio_feats_test.csv", index=False)
 
     return audio_feats_df

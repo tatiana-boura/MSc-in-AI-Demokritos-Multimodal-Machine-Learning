@@ -19,7 +19,7 @@ def get_transcript_from_yt_id(video_id):
         return "Transcript not found."
 
 
-def get_text_features(data):
+def get_text_features(data, test=False):
 
     text_feats_df = pd.DataFrame(columns=["song_name", "lyrics"])
     yt = YTMusic("C:\\Users\\tatbo\\oauth.json")
@@ -57,10 +57,13 @@ def get_text_features(data):
             no_lyrics += 1
 
     print(no_lyrics)
-    text_feats_df.to_csv("./lyrics.csv", index=False)
+    if not test:
+        text_feats_df.to_csv("./lyrics.csv", index=False)
+    else:
+        text_feats_df.to_csv("./lyrics_test.csv", index=False)
 
 
-def lyrics_to_embeddings(df_path):
+def lyrics_to_embeddings(df_path, test=False):
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(f'Device is: {device}')
@@ -91,4 +94,7 @@ def lyrics_to_embeddings(df_path):
 
         text_feats_df.loc[len(text_feats_df)] = [df.loc[i].song_name]+embedding[0]
 
-        text_feats_df.to_csv("./lyrics_embeddings.csv", index=False)
+        if not test:
+            text_feats_df.to_csv("./lyrics_embeddings.csv", index=False)
+        else:
+            text_feats_df.to_csv("./lyrics_embeddings_test.csv", index=False)

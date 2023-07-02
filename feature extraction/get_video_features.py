@@ -52,7 +52,7 @@ class VideoDataset(Dataset):
         return idx, frames_tensor
 
 
-def get_video_features(data, config):
+def get_video_features(data, config, test=False):
 
     # data = data.iloc[:10]
 
@@ -102,6 +102,14 @@ def get_video_features(data, config):
 
                 if (i + 1) % 100 == 0:
                     print(f'Video-clip {i}...')
-                    video_feats_df.to_csv("./video_feats.csv", index=False)
+                    if not test:
+                        video_feats_df.to_csv("./video_feats.csv", index=False)
+                    else:
+                        video_feats_df.to_csv("./video_feats_test.csv", index=False)
+
+    if not test:
+        video_feats_df.to_csv("./video_feats.csv", index=False)
+    else:
+        video_feats_df.to_csv("./video_feats_test.csv", index=False)
 
     return video_feats_df

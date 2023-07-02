@@ -27,46 +27,56 @@ def create_index(config):
     return index
 
 
-def get_features():
+def get_features(test=False):
 
     with open('../config.yaml', 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
-    BLUES_PATH = config["BLUES_PATH"]
-    COUNTRY_PATH = config["COUNTRY_PATH"]
-    HIP_HOP_PATH = config["HIP_HOP_PATH"]
-    INDIE_PATH = config["INDIE_PATH"]
-    METAL_PATH = config["METAL_PATH"]
-    POP_ROCK_PATH = config["POP_ROCK_PATH"]
-    PUNK_PATH = config["PUNK_PATH"]
-    SOUL_PATH = config["SOUL_PATH"]
-    DRILL_PATH = config["DRILL_PATH"]
-
     FEATS_PATH = config["FEATS_PATH"]
 
-    clip_config = [BLUES_PATH, COUNTRY_PATH, HIP_HOP_PATH, INDIE_PATH, METAL_PATH, POP_ROCK_PATH, PUNK_PATH, SOUL_PATH, DRILL_PATH]
+    if not test:
+        BLUES_PATH = config["BLUES_PATH"]
+        COUNTRY_PATH = config["COUNTRY_PATH"]
+        HIP_HOP_PATH = config["HIP_HOP_PATH"]
+        INDIE_PATH = config["INDIE_PATH"]
+        METAL_PATH = config["METAL_PATH"]
+        POP_ROCK_PATH = config["POP_ROCK_PATH"]
+        PUNK_PATH = config["PUNK_PATH"]
+        SOUL_PATH = config["SOUL_PATH"]
+        DRILL_PATH = config["DRILL_PATH"]
 
-    index = create_index(config=clip_config)
 
-    index.to_csv("./index.csv", index=False)
-    '''
-    print(index)
-    '''
-    '''
-    audio_feats = get_audio_features(index[["path_audio", "song_name", "genre"]], config)
+        clip_config = [BLUES_PATH, COUNTRY_PATH, HIP_HOP_PATH, INDIE_PATH, METAL_PATH, POP_ROCK_PATH, PUNK_PATH, SOUL_PATH, DRILL_PATH]
+
+        index = create_index(config=clip_config)
+
+        index.to_csv("./index.csv", index=False)
+
+    else:
+
+        TEST_PATH = config["TEST_PATH"]
+
+        clip_config = [TEST_PATH]
+
+        index = create_index(config=clip_config)
+
+        index.to_csv("./index_test.csv", index=False)
+
+
+    # print(index)
+
+
+    audio_feats = get_audio_features(index[["path_audio", "song_name", "genre"]], config, test)
     print(audio_feats)
-    '''
 
-    video_feats = get_video_features(index[["path_video", "song_name", "genre"]], config)
+    video_feats = get_video_features(index[["path_video", "song_name", "genre"]], config, test)
     print(video_feats)
 
-    '''
-    get_text_features(index[["path_audio", "song_name", "genre"]])
-    '''
-    '''
-    lyrics_to_embeddings(FEATS_PATH+"\\lyrics.csv")
-    '''
+    get_text_features(index[["path_audio", "song_name", "genre"]], test)
 
+    if not test:
+        lyrics_to_embeddings(FEATS_PATH+"\\lyrics.csv", test)
+    else:
+        lyrics_to_embeddings(FEATS_PATH + "\\lyrics_test.csv", test)
 
-
-get_features()
+# get_features()
