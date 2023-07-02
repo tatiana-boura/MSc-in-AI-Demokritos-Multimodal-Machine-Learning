@@ -29,7 +29,6 @@ class VideoClips(Dataset):
         self.song_names = self.data.iloc[:, 0]
 
         if not test:
-
             scaler = StandardScaler()
             scaler.fit(self.data.iloc[:, 1:])
             self.data = scaler.transform(self.data.iloc[:, 1:])
@@ -37,8 +36,6 @@ class VideoClips(Dataset):
             dump(scaler, 'std_scaler.bin', compress=True)
 
         else:
-            print("here")
-
             scaler = load('../std_scaler.bin')
             self.data = scaler.transform(self.data.iloc[:, 1:])
 
@@ -87,7 +84,7 @@ class Autoencoder(nn.Module):
         return x
 
 
-def representation_learning(test=False):
+def representation_learning():
 
     with open('./config.yaml', 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
@@ -109,7 +106,7 @@ def representation_learning(test=False):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     model = Autoencoder(input_dim, latent_dim).to(device)
-    print(model)
+    # print(model)
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=0.0001)
 
@@ -190,7 +187,7 @@ def get_representations():
     model = Autoencoder(input_dim, latent_dim).to(device)
     model.load_state_dict(torch.load(AUTOENC_PATH))
     model.eval()
-    print(model)
+    # print(model)
 
     target_layer = model.encoder3
 

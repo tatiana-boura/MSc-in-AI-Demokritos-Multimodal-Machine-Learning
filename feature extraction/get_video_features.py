@@ -54,8 +54,6 @@ class VideoDataset(Dataset):
 
 def get_video_features(data, config, test=False):
 
-    # data = data.iloc[:10]
-
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(f'Device is: {device}')
 
@@ -76,7 +74,7 @@ def get_video_features(data, config, test=False):
     transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Resize((256, 256)),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+        transforms.Normalize(mean=[0.45, 0.45, 0.45], std=[0.225, 0.225, 0.225])
     ])
 
     # Create an instance of the VideoDataset

@@ -47,13 +47,13 @@ def get_text_features(data, test=False):
                 transcript = transcript.replace("[Music]", "")
                 transcript = transcript.replace("♪", "")
 
-                print(f'{search_results[j]["videoId"]} : {transcript}')
+                # print(f'{search_results[j]["videoId"]} : {transcript}')
                 text_feats_df.loc[len(text_feats_df)] = [video_title, transcript]
                 break
 
         if transcript == "Transcript not found.":
             # text_feats_df.loc[len(text_feats_df)] = [video_title, " "]
-            # print(f'{video_title} : no lyrics found :(')
+            print(f'{video_title} : no lyrics found :(')
             no_lyrics += 1
 
     print(no_lyrics)

@@ -65,12 +65,11 @@ def get_features(test=False):
 
     # print(index)
 
-
     audio_feats = get_audio_features(index[["path_audio", "song_name", "genre"]], config, test)
-    print(audio_feats)
+    #print(audio_feats)
 
     video_feats = get_video_features(index[["path_video", "song_name", "genre"]], config, test)
-    print(video_feats)
+    #print(video_feats)
 
     get_text_features(index[["path_audio", "song_name", "genre"]], test)
 
