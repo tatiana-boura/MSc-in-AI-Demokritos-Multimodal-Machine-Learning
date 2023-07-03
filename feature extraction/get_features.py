@@ -53,7 +53,6 @@ def get_features(test=False):
         index.to_csv("./index.csv", index=False)
 
     else:
-
         TEST_PATH = config["TEST_PATH"]
 
         clip_config = [TEST_PATH]
@@ -62,14 +61,9 @@ def get_features(test=False):
 
         index.to_csv("./index_test.csv", index=False)
 
+    get_audio_features(index[["path_audio", "song_name", "genre"]], config, test)
 
-    # print(index)
-
-    audio_feats = get_audio_features(index[["path_audio", "song_name", "genre"]], config, test)
-    #print(audio_feats)
-
-    video_feats = get_video_features(index[["path_video", "song_name", "genre"]], config, test)
-    #print(video_feats)
+    get_video_features(index[["path_video", "song_name", "genre"]], config, test)
 
     get_text_features(index[["path_audio", "song_name", "genre"]], test)
 
@@ -78,4 +72,3 @@ def get_features(test=False):
     else:
         lyrics_to_embeddings(FEATS_PATH + "\\lyrics_test.csv", test)
 
-# get_features()

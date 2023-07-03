@@ -27,7 +27,6 @@ def get_text_features(data, test=False):
     no_lyrics = 0
 
     for i in range(len(data)):
-    #for i in range(10):
 
         video_title = data.loc[i].song_name
 

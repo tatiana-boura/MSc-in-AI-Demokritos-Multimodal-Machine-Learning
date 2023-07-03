@@ -79,7 +79,7 @@ class Autoencoder(nn.Module):
         x = self.activation(self.decoder11(x))
         x = self.activation(self.decoder1(x))
         x = self.activation(self.decoder2(x))
-        x = self.activation(self.decoder3(x))
+        x = self.decoder3(x)
 
         return x
 
